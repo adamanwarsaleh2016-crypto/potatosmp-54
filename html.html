@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Server</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.75)),
+        url("minecraft.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    color: white;
+}
+
+.container {
+    width: 100%;
+    padding: 20px;
+}
+
+.card {
+    max-width: 500px;
+    margin: auto;
+
+    padding: 25px;
+    text-align: center;
+
+    background: rgba(15, 15, 15, 0.88);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+
+    backdrop-filter: blur(8px);
+}
+
+.server-image {
+    width: 180px;
+    height: 180px;
+
+    object-fit: cover;
+
+    border-radius: 15px;
+    border: 3px solid #55ff55;
+
+    box-shadow: 0 0 25px rgba(85, 255, 85, 0.5);
+
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 8px;
+
+    color: #55ff55;
+
+    text-shadow: 3px 3px 0 #222;
+}
+
+.subtitle {
+    color: #ccc;
+    margin-bottom: 25px;
+}
+
+.ip-box {
+    display: flex;
+
+    background: #111;
+    border: 2px solid #333;
+
+    border-radius: 10px;
+    overflow: hidden;
+
+    margin-bottom: 15px;
+}
+
+#serverIP {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 15px;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    color: #fff;
+}
+
+button {
+    border: none;
+    padding: 0 20px;
+
+    background: #55ff55;
+    color: #111;
+
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #2cff2c;
+    transform: scale(1.05);
+}
+
+#message {
+    height: 20px;
+    color: #55ff55;
+    font-weight: bold;
+}
+
+.info {
+    display: flex;
+    justify-content: space-around;
+
+    margin-top: 25px;
+    padding-top: 20px;
+
+    border-top: 1px solid #333;
+}
+
+.info div {
+    text-align: center;
+}
+
+.info span {
+    font-size: 25px;
+}
+
+.info p {
+    margin-top: 5px;
+    color: #aaa;
+    font-size: 13px;
+}
+
+@media (max-width: 500px) {
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .server-image {
+        width: 140px;
+        height: 140px;
+    }
+
+    #serverIP {
+        font-size: 14px;
+    }
+
+    button {
+        padding: 0 12px;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="card">
+
+            <img src="images_1.jpg" alt="Minecraft Server photo" class="server-image">
+
+            <h1>Minecraft Server</h1>
+            <p class="subtitle">Join our Minecraft server!</p>
+
+            <div class="ip-box">
+                <span id="serverIP">PotatoSMP-qN0y.aternos.me:31791</span>
+                <button onclick="copyIP()">COPY</button>
+            </div>
+
+            <p id="message"></p>
+
+            <div class="info">
+                <div>
+                    <span>🟢</span>
+                    <p>Online</p>
+                </div>
+
+                <div>
+                    <span>🎮</span>
+                    <p>Java Edition</p>
+                </div>
+
+                <div>
+                    <span>⚔️</span>
+                    <p>Survival</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+<script>
+    function copyIP() {
+
+    const ip = document.getElementById("serverIP").textContent;
+    const message = document.getElementById("message");
+
+    navigator.clipboard.writeText(ip)
+        .then(() => {
+
+            message.textContent = "✅ IP copied!";
+
+            setTimeout(() => {
+                message.textContent = "";
+            }, 2000);
+
+        })
+        .catch(() => {
+
+            message.textContent = "❌ Failed to copy IP.";
+
+        });
+}
+</script>
+</html>
